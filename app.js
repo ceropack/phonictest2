@@ -7,7 +7,7 @@ const phonic_o = fs.readFileSync('phonic_ex.json');
 const personObject = JSON.parse(phonic_o);
 /* let phonic_obj_prase = JSON.parse(phonic_obj); */
 
-app.set('views', './views');
+app.set('view engine', 'ejs');
 app.get('/', function (req, res) {
   res.render('index', { 
     name: "Phonic",
