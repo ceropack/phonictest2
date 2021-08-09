@@ -4,6 +4,7 @@
   "description": "delopment in comp enginer",
   "main": "**node**  app.js",
   "scripts": {
+    "start": "app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
