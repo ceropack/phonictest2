@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ 
+  <%- include('cssstyling') %>
+
+</head>
+<body>
+  <h2><%= name %></h2>
+ 
+  <table>
+    <tbody>
+
+          <% for(var i=0; i<items.length; i++) { %>
+              <tr>
+              <td class="phonic-learn"><%= items[i].sound %></td>
+              
+            <% let wordls = items[i].word %>
+                
+                <%  for(var k=0; k<wordls.length; k++) { %>
+                  <td class="phonic-tail">  <%= wordls[k]%>  </td> 
+                <% } %>
+                            
+           <% } %>
+  
+      </tr>
+  
+  </tbody>
+  
+</table>
+
+
+
+
+<script>
+  $(function(){
+  
+
+    if ('speechSynthesis' in window) {
+
+       $('td').click(function(){
+         var text = $(this).text();
+         var msg = new SpeechSynthesisUtterance();
+         var voices = window.speechSynthesis.getVoices();
+         
+
+         msg.text = text;
+   
+         speechSynthesis.speak(msg);
+
+
+         $(this).animate({
+          opacity: 0.25,
+          }, 3000, function() {
+            // Animation complete.
+          });
+       })
+    console.log(' SOUND OK')
+    } else{
+        console.log('NO SOUND')
+
+    }
+    
+    });
+  
+   </script>
+
+</body>
+</html>
+
+
